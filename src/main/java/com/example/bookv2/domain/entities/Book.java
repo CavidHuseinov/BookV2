@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @Setter
@@ -17,5 +19,5 @@ import lombok.Setter;
 public class Book extends BaseEntity {
     private String name;
     private String description;
-    private int price;
+    private BigDecimal price;
 }
