@@ -1,3 +1,5 @@
 package com.example.bookv2.application.DTOs.book;
 
-public record bookDto(String name, String description , int price) { }
+import java.math.BigDecimal;
+
+public record bookDto(String name, String description , BigDecimal price) { }

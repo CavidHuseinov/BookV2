@@ -1,7 +1,9 @@
 package com.example.bookv2.persistance.IRepository;
 
-import jakarta.persistence.Id;
+import com.example.bookv2.domain.entities.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface IBookRepository extends JpaRepository<Integer, Id> {
+@Repository
+public interface IBookRepository extends JpaRepository<Book, Integer> {
 }
