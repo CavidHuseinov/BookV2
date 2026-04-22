@@ -1,8 +1,8 @@
 package com.example.bookv2.application.services.implementations;
 
-import com.example.bookv2.application.DTOs.book.bookDto;
-import com.example.bookv2.application.DTOs.book.createBookDto;
-import com.example.bookv2.application.DTOs.book.updateBookDto;
+import com.example.bookv2.application.DTOs.book.BookDto;
+import com.example.bookv2.application.DTOs.book.CreateBookDto;
+import com.example.bookv2.application.DTOs.book.UpdateBookDto;
 import com.example.bookv2.application.services.interfaces.IBookService;
 import com.example.bookv2.domain.entities.Book;
 import com.example.bookv2.persistance.IRepository.IBookRepository;
@@ -20,10 +20,10 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public List<bookDto> getAllBooks() {
+    public List<BookDto> getAllBooks() {
         return bookRepo.findAll()
                 .stream()
-                .map(book -> new bookDto(
+                .map(book -> new BookDto(
                         book.getName(),
                         book.getDescription(),
                         book.getPrice()
@@ -32,11 +32,11 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public bookDto getBookById(int id) {
+    public BookDto getBookById(int id) {
         Book book = bookRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
 
-        return new bookDto(
+        return new BookDto(
                 book.getName(),
                 book.getDescription(),
                 book.getPrice()
@@ -44,7 +44,7 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public void createBook(createBookDto book) {
+    public void createBook(CreateBookDto book) {
         Book newBook = new Book();
         newBook.setName(book.name());
         newBook.setDescription(book.description());
@@ -53,7 +53,7 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public bookDto updateBook(int id, updateBookDto book) {
+    public BookDto updateBook(int id, UpdateBookDto book) {
         Book existingBook = bookRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
 
@@ -62,7 +62,7 @@ public class BookService implements IBookService {
         existingBook.setPrice(book.price());
         bookRepo.save(existingBook);
 
-        return new bookDto(
+        return new BookDto(
                 existingBook.getName(),
                 existingBook.getDescription(),
                 existingBook.getPrice()

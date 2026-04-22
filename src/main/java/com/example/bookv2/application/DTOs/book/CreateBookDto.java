@@ -4,7 +4,9 @@ import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
 
-public record updateBookDto(
+/// for all *
+
+public record CreateBookDto(
         @NotBlank(message = "Kitabin adini teyin edin")
         @Size(min = 1 , max= 30, message = "kitabin adi 1-30 simvol " +
                 "arasi teyin olunmalidir")
@@ -18,4 +20,3 @@ public record updateBookDto(
         @Max(value = 500, message = "Kitab ucun teyin ede bileceyiniz maksimal qiymet 500-dur")
         BigDecimal price) {
 }
-
