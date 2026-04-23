@@ -24,6 +24,7 @@ public class BookService implements IBookService {
         return bookRepo.findAll()
                 .stream()
                 .map(book -> new BookDto(
+                        book.getId(),
                         book.getName(),
                         book.getDescription(),
                         book.getPrice()
@@ -37,6 +38,7 @@ public class BookService implements IBookService {
                 .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
 
         return new BookDto(
+                book.getId(),
                 book.getName(),
                 book.getDescription(),
                 book.getPrice()
@@ -63,6 +65,7 @@ public class BookService implements IBookService {
         bookRepo.save(existingBook);
 
         return new BookDto(
+                existingBook.getId(),
                 existingBook.getName(),
                 existingBook.getDescription(),
                 existingBook.getPrice()
