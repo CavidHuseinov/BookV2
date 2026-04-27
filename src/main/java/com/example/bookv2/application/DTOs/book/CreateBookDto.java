@@ -18,5 +18,5 @@ public record CreateBookDto(
         @NotNull(message = "Kitaba qiymet teyin edin zehmet olmasa")
         @DecimalMin(value = "0.1" , message = "Kitab ucun qiymet minimum 0.1-dir.")
         @Max(value = 500, message = "Kitab ucun teyin ede bileceyiniz maksimal qiymet 500-dur")
-        BigDecimal price) {
-}
+        BigDecimal price ,
+        Integer authorId){}
